@@ -1,7 +1,7 @@
 models:
   gpt-4o:
     grpcUrl: gate.caila.io
-    clientToken: 1000005888.90713.irLIhMwk4ImPQobOZcbipfXyZuyPPz8c559j319X
+    clientToken: <seacreatToken>
     model: just-ai/openai-proxy/gpt-4o
 
 

@@ -1,7 +1,7 @@
 caila:
   grpcUrl: gate.caila.io
   restUrl: https://caila.io/
-  clientToken: 1000005888.90713.irLIhMwk4ImPQobOZcbipfXyZuyPPz8c559j319X
+  clientToken: <seacreatToken>
   defaultModel:
     model: just-ai/openai-proxy/gpt-4o
     #     model: just-ai/claude/claude-3-haiku
