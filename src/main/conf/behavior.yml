@@ -1,0 +1,59 @@
+models:
+  gpt-4o:
+    grpcUrl: gate.caila.io
+    clientToken: 1000005888.90713.irLIhMwk4ImPQobOZcbipfXyZuyPPz8c559j319X
+    model: just-ai/openai-proxy/gpt-4o
+
+
+
+root:
+  props:
+    model: gpt-4o
+    systemPrompt: |
+      Ты выступаешь в роли собеседника на интервью.
+      Отвечай короткими предложениями, так чтобы собеседник мог вставить слово.
+      Задавай вопросы собеседнику, чтобы ему было интересно с тобой разговаривать.
+      Если спросят "чем занимаешься", отвечай - провожу интервью
+
+  transitions:
+    - name: Здравствуйте
+      rule:
+        name: onStart
+      activate:
+        state: welcome_dialog
+
+    - name:
+      rule:
+        name: timeout
+        args:
+          time: 5m
+      activate:
+        state: welcome_dialog
+        args: {}
+
+    - name: Завершаем разговор
+      rule:
+        name: timeout
+        args:
+          time: 5m
+      activate:
+        state: welcome_dialog
+        args: {}
+
+  subStates:
+    - name: welcome_dialog
+      props: # Стейт содержит набор свойств, которые могут использоваться как угодно. Свойства стейта наследуются от родительского сейта.
+        systemPrompt: Поздоровайся со своим собеседником
+      transitions:
+        - name: Через 2 минуты выйдем.
+          rule:
+            name: timeout
+            args:
+              time: 2m
+          activate:
+            state: root
+      actions:
+        onEnter:
+          - sendText: Привет!
+        onUserInput:
+          -

@@ -1,0 +1,47 @@
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2 http://maven.apache.org/xsd/assembly-1.1.2.xsd">
+    <id>distribution</id>
+    <baseDirectory>${project.artifactId}</baseDirectory>
+    <includeBaseDirectory>false</includeBaseDirectory>
+
+    <formats>
+        <format>dir</format>
+        <format>zip</format>
+    </formats>
+    <dependencySets>
+        <dependencySet>
+            <scope>runtime</scope>
+            <outputDirectory>lib/</outputDirectory>
+            <includes>
+                <include>*</include>
+            </includes>
+            <excludes>
+                <exclude>cc:*</exclude>
+            </excludes>
+        </dependencySet>
+        <dependencySet>
+            <scope>runtime</scope>
+            <outputDirectory>libm/</outputDirectory>
+            <includes>
+                <include>cc:*</include>
+            </includes>
+        </dependencySet>
+    </dependencySets>
+
+    <fileSets>
+        <fileSet>
+            <directory>src/main/scripts</directory>
+            <outputDirectory>.</outputDirectory>
+            <fileMode>755</fileMode>
+        </fileSet>
+        <fileSet>
+            <directory>src/main/conf</directory>
+            <outputDirectory>conf</outputDirectory>
+            <includes>
+                <include>voice-demo.yml</include>
+                <include>logback.xml</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+</assembly>

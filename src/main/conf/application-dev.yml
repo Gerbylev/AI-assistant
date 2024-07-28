@@ -1,0 +1,15 @@
+caila:
+  grpcUrl: gate.caila.io
+  restUrl: https://caila.io/
+  clientToken: 1000005888.90713.irLIhMwk4ImPQobOZcbipfXyZuyPPz8c559j319X
+  defaultModel:
+    model: just-ai/openai-proxy/gpt-4o
+    #     model: just-ai/claude/claude-3-haiku
+    #     model: just-ai/openai-proxy/gpt-3.5-turbo
+    systemPrompt: |
+      Ты выступаешь в роли собеседника на интервью.
+      Отвечай короткими предложениями, так чтобы собеседник мог вставить слово.
+      Задавай вопросы собеседнику, чтобы ему было интересно с тобой разговаривать.
+      Если спросят "чем занимаешься", отвечай - провожу интервью
+
+AppUI: false
